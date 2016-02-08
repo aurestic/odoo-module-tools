@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <record id="repository_repository_view_form" model="ir.ui.view">
+            <field name="name">repository.repository.form</field>
+            <field name="model">repository.repository</field>
+            <field name="arch" type="xml">
+                <form string="Repository">
+                    <sheet>
+                        <div class="oe_title">
+                            <h2><field name="source" widget="url"/></h2>
+                        </div>
+                        <div class="oe_right oe_button_box" name="button_box">
+                            <button name="action_open_modules" attrs="{'invisible': [('module_count', '=', 0)]}"
+                                type="object" icon="fa-cubes" class="oe_inline oe_stat_button">
+                                <div>View Modules</div>
+                            </button>
+                            <button name="action_confirm" attrs="{'invisible': [('dirty', '=', True)]}"
+                                type="object" icon="fa-refresh" class="oe_inline oe_stat_button" context="{'action': 'update'}">
+                                <div>Update</div>
+                            </button>
+                            <button name="action_confirm" attrs="{'invisible': ['|', ('dirty', '=', True), ('enabled', '=', True)]}"
+                                type="object" icon="fa-trash-o" class="oe_inline oe_stat_button" context="{'action': 'remove'}">
+                                <div>Remove</div>
+                            </button>
+                            <button name="action_confirm" attrs="{'invisible': [('enabled', '=', True)]}"
+                                type="object" icon="fa-toggle-off" class="oe_inline oe_stat_button" context="{'action': 'enable'}">
+                                <div>Enable</div>
+                            </button>
+                            <button name="action_confirm" attrs="{'invisible': [('enabled', '=', False)]}"
+                                type="object" icon="fa-toggle-on" class="oe_inline oe_stat_button" context="{'action': 'disable'}">
+                                <div>Disable</div>
+                            </button>
+                        </div>
+
+                        <group col="4">
+                            <field name="vcs"/>
+                            <field name="branch"/>
+                            <field name="rev_id" colspan="4"/>
+                            <field name="rev_date"/>
+                            <field name="dirty"/>
+                            <field name="module_count"/>
+                            <field name="enabled"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="repository_repository_view_tree" model="ir.ui.view">
+            <field name="name">repository.repository.tree</field>
+            <field name="model">repository.repository</field>
+            <field name="arch" type="xml">
+                <tree colors="orangered: enabled and dirty; darkorange: dirty; gray: not enabled;"> <!-- fonts="bold: enabled;"> -->
+                    <field name="path" invisible="1"/>
+                    <field name="dirty" invisible="1"/>
+                    <field name="enabled" invisible="1"/>
+                    <field name="vcs" invisible="1"/>
+                    <field name="source" widget="url"/>
+                    <field name="branch"/>
+                    <field name="rev_id"/>
+                    <field name="rev_date"/>
+                    <field name="module_count"/>
+                    <button name="action_open_modules" type="object" icon="terp-accessories-archiver" string="Open Repository Modules"
+                        attrs="{'invisible': ['|', ('module_count', '=', 0), ('enabled', '=', False)]}"/>
+                    <button name="action_confirm_enable" type="object" icon="gtk-yes" string="Enable Repository"
+                        attrs="{'invisible': [('enabled', '=', True)]}"/>
+                    <button name="action_confirm_disable" type="object" icon="gtk-no" string="Disable Repository"
+                        attrs="{'invisible': [('enabled', '=', False)]}"/>
+                    <button name="action_confirm_update" type="object" icon="gtk-refresh" string="Update Repository"
+                        attrs="{'invisible': [('dirty', '=', True)]}"/>
+                    <button name="action_confirm_remove" type="object" icon="gtk-cancel" string="Remove Repository"
+                        attrs="{'invisible': [('enabled', '=', True)]}"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</openerp>

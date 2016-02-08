@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <record id="repository_confirm_view_form" model="ir.ui.view">
+            <field name="name">repository.confirm.form</field>
+            <field name="model">repository.confirm</field>
+            <field name="arch" type="xml">
+                <form string="Warning">
+                    <field name="state" invisible="1"/>
+
+                    <group name="repositories" col="1">
+                        <h1 states="remove">The repository will be permanently removed</h1>
+                        <h1 states="update">The repository will be updated</h1>
+                        <h1 states="enable">The repository will be enabled</h1>
+                        <h1 states="disable">The repository will be disabled</h1>
+
+                        <ul>
+                            <li states="enable">The repository modules will be available.</li>
+                            <li states="disable">The repository modules will no longer be available.</li>
+                            <li states="remove">This action <strong>cannot be undone</strong>.</li>
+                            <li states="remove,enable,disable,update">
+                                This action <strong>may harm</strong> your database and/or can make
+                                the server <strong>unusable/unstartable</strong>.
+                            </li>
+                            <li states="remove,enable,disable,update">
+                                It is highly recommended to <strong>restart the server</strong> and to
+                                <strong>update the module list</strong> when this action is performed.
+                            </li>
+                        </ul>
+
+                        <group>
+                            <field name="restart_server" />
+                            <field name="update_module_list" />
+                        </group>
+                    </group>
+
+                    <footer>
+                        <button name="action_confirm" type="object" string="Remove Repository" states="remove" class="oe_highlight"/>
+                        <button name="action_confirm" type="object" string="Update Repository" states="update" class="oe_highlight"/>
+                        <button name="action_confirm" type="object" string="Enable Repository" states="enable" class="oe_highlight"/>
+                        <button name="action_confirm" type="object" string="Disable Repository" states="disable" class="oe_highlight"/>
+                        or
+                        <button name="cancel" string="Cancel" special="cancel" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</openerp>

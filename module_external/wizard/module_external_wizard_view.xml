@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <record id="module_import_wizard_view_form" model="ir.ui.view">
+            <field name="name">module.external.wizard.form</field>
+            <field name="model">module.external.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Upload Modules">
+                    <field name="state" invisible="1"/>
+
+                    <group>
+                        <field name="url_list" placeholder="URLs can be delimited by comma, semicolon, tab, space and/or new line "/>
+                        <field name="line_ids" context="{'wizard_state': state}"/>
+                    </group>
+
+                    <footer>
+                        <button name="action_upload" type="object" string="Upload" class="oe_highlight" states="select"/>
+                        <button name="action_confirm" type="object" string="Confirm" class="oe_highlight" states="confirm"/>
+                        or
+                        <button name="cancel" string="Cancel" special="cancel" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="module_import_wizard_line_view_tree" model="ir.ui.view">
+            <field name="name">module.external.wizard.line.tree</field>
+            <field name="model">module.external.wizard.line</field>
+            <field name="arch" type="xml">
+                <tree string="Modules" editable="bottom">
+                    <field name="filename" invisible="1"/>
+                    <field name="file" filename="filename"/>
+                    <field name="module"/>
+                    <field name="version"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="module_import_wizard_line_view_form" model="ir.ui.view">
+            <field name="name">module.external.wizard.line.form</field>
+            <field name="model">module.external.wizard.line</field>
+            <field name="arch" type="xml">
+                <form string="Module">
+                    <field name="filename" invisible="1"/>
+                    <sheet>
+                        <group col="4">
+                            <field name="file" filename="filename" readonly="1" colspan="4"/>
+                            <field name="module"/>
+                            <field name="version"/>
+                        </group>
+
+                        <group string="Description">
+                            <field name="description_html" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="module_import_wizard_action" model="ir.actions.act_window">
+            <field name="name">Upload Modules</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">module.external.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem
+            id="module_import_wizard_menu"
+            action="module_import_wizard_action"
+            name="Upload Modules"
+            parent="base.menu_management"
+            groups="base.group_no_one"
+            sequence="150"/>
+
+    </data>
+</openerp>

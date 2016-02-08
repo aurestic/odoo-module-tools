@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <record id="repository_dashboard_view_form" model="ir.ui.view">
+            <field name="name">repository.dashboard.form</field>
+            <field name="model">repository.dashboard</field>
+            <field name="arch" type="xml">
+                <form string="Repositories">
+                    <button name="action_add_repository" type="object" icon="fa-plus-circle"
+                        class="oe_inline oe_stat_button" help="Add new repository" string="Add Repository"/>
+
+                    <group name="repositories" col="1">
+                        <field name="repository_ids" nolabel="1" options="{'reload_on_button': true}"/>
+                    </group>
+
+                    <div>
+                        <ul style="list-style-type: none; padding: 0; font-weight: bold;">
+                            <li style="display: inline-block; padding-right: 10px"><span style="color: gray;">Not Enabled</span></li>
+                            <li style="display: inline-block; padding-right: 10px"><span style="color: orangered;">Enabled but not clean</span></li>
+                            <li style="display: inline-block; padding-right: 10px"><span style="color: darkorange;">Not Clean</span></li>
+                            <li style="display: inline-block; padding-right: 10px"><img src="/web/static/src/img/icons/terp-accessories-archiver.png"/> View Repository Modules</li>
+                            <li style="display: inline-block; padding-right: 10px"><img src="/web/static/src/img/icons/gtk-yes.png"/> Enable Repository</li>
+                            <li style="display: inline-block; padding-right: 10px"><img src="/web/static/src/img/icons/gtk-no.png"/> Disable Repository</li>
+                            <li style="display: inline-block; padding-right: 10px"><img src="/web/static/src/img/icons/gtk-cancel.png"/> Remove Repository</li>
+                            <li style="display: inline-block; padding-right: 10px"><img src="/web/static/src/img/icons/gtk-refresh.png"/> Update Repository</li>
+                        </ul>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="repository_dashboard_action_form" model="ir.actions.server">
+            <field name="name">Repositories</field>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="model_id" ref="repository.model_repository_dashboard"/>
+            <field name="code">action = {
+                'type': 'ir.actions.act_window',
+                'views': [(False, 'form')],
+                'res_model': 'repository.dashboard',
+                'res_id': self.create(cr, uid, {}, context=context),
+                'flags': {
+                    'action_buttons': False,
+                    'sidebar': False,
+                },
+            }</field>
+        </record>
+
+        <menuitem id="repository_dashboard_menu"
+            action="repository_dashboard_action_form"
+            name="Repositories"
+            parent="base.menu_custom"
+            sequence="50"/>
+
+    </data>
+</openerp>

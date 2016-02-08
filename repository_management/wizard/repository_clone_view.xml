@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <record id="repository_clone_view_form" model="ir.ui.view">
+            <field name="name">repository.clone.form</field>
+            <field name="model">repository.clone</field>
+            <field name="arch" type="xml">
+                <form string="New Repository">
+                    <group name="repositories" col="2">
+                        <field name="vcs"/>
+                        <field name="source" placeholder="http://domain/repo, user@domain:repo, lp:repo/branch..."/>
+                        <field name="branch" placeholder="8.0, master..."/>
+                    </group>
+                    <footer>
+                        <button name="action_clone" type="object" string="Clone" class="oe_highlight"/>
+                        or
+                        <button name="cancel" string="Cancel" special="cancel" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</openerp>
