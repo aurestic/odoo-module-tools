@@ -17,7 +17,7 @@ The recommended installation way is to clone this repository under your Odoo's *
 # su - odoo -c "git clone https://github.com/crimoniv/odoo-module-tools -b 8.0 ~/.local/share/Odoo/repositories/8.0/odoo_module_tools
 ```
 
-Once the repository is completely cloned, its absolute path must be included in the **addons_path** parameter, in you *OpenERP/Odoo*'s config file (e.g. `/etc/odoo/openerp-server.conf`).
+Once the repository is completely cloned, its absolute path must be included in the **addons_path** parameter, in *OpenERP/Odoo*'s config file (e.g. `/etc/odoo/openerp-server.conf`).
 
 ```
 addons_path = <path1>,<path2>,/home/odoo/.local/share/Odoo/repositories/8.0/odoo_module_tools
