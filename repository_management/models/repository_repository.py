@@ -61,7 +61,7 @@ def build_repository_path(vcs, source, branch=None, test=False, **kwargs):
 class RepositoryRepository(models.TransientModel):
     _name = 'repository.repository'
     _rec_name = 'source'
-    _order = 'source ASC'
+    # _order = 'source ASC'
 
     wizard_id = fields.Many2one(
         'repository.dashboard', 'Dashboard', required=True, readonly=True)
