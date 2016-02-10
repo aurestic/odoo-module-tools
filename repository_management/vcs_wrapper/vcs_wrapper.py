@@ -36,9 +36,9 @@ if __name__ == '__main__':
 
 def load_vcs(vcs):
     module = 'vcs.%s' % (vcs,)
-    pred = lambda c: inspect.isclass(c) and c.__module__.endswith(module)
-    args = (module, globals(), locals(), [], -1)
-    cls = inspect.getmembers(getattr(__import__(*args), vcs), pred)
+    cls = inspect.getmembers(
+        getattr(__import__(module, globals(), locals(), [], -1), vcs),
+        lambda c: inspect.isclass(c) and c.__module__.endswith(module))
     if len(cls) != 1:
         raise Exception('Main class not found.')
     return cls[0][1]
@@ -91,6 +91,7 @@ class VcsWrapper(object):
         for vcs, cls in _LOADED_VCS:
             if cls.is_repo(path):
                 return vcs
+
 
 def test():
     import shutil

@@ -69,6 +69,11 @@ _logger.debug('Repository dir: %s', repository_dir())
 class RepositoryDashboard(models.TransientModel):
     _name = 'repository.dashboard'
 
+    name = fields.Char('Name', default=lambda s: _('Repositories'))
+    repository_ids = fields.One2many(
+        'repository.repository', 'wizard_id', 'Repositories',
+        default=lambda self: self._default_repository_ids())
+
     def _default_repository_ids(self):
         """ Find all repositories. """
         res = []
@@ -82,11 +87,6 @@ class RepositoryDashboard(models.TransientModel):
                     "The directory '%s' does not contain a valid repository "
                     "structure." % (path,))
         return res
-
-    name = fields.Char('Name', default=lambda s: _('Repositories'))
-    repository_ids = fields.One2many(
-        'repository.repository', 'wizard_id', 'Repositories',
-        default=_default_repository_ids)
 
     @api.multi
     def copy(self, default=None):
