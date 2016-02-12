@@ -1,24 +1,6 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-#
-#    Odoo, Open Source Management Solution
-#    This module copyright:
-#        (C) 2016 Cristian Moncho
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
+# © 2016 Cristian Moncho <cristian.moncho@diagram.es>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import logging
 
@@ -28,23 +10,22 @@ from ..vcs_wrapper import VcsWrapper
 
 _logger = logging.getLogger(__name__)
 
-_SELECTION_VCS = [(i, i) for i in VcsWrapper.available_vcs()]
-_DEFAULT_VCS = _SELECTION_VCS[0][0] if _SELECTION_VCS else None
+SELECTION_VCS = [(i, i) for i in VcsWrapper.available_vcs()]
+DEFAULT_VCS = SELECTION_VCS[0][0] if SELECTION_VCS else None
 
 
 class RepositoryRepositoryClone(models.TransientModel):
     _name = 'repository.clone'
 
     vcs = fields.Selection(
-        _SELECTION_VCS, 'VCS', default=_DEFAULT_VCS, required=True)
+        SELECTION_VCS, 'VCS', default=DEFAULT_VCS, required=True)
     source = fields.Char('Source', required=True)
     branch = fields.Char('Branch', default=release.series)
 
     @api.multi
     def action_clone(self):
         self.ensure_one()
-        Repository = self.env['repository.repository']
-        Repository.with_context(**{
+        self.env['repository.repository'].with_context(**{
             'initialize_repository': True
         }).create({
             'vcs': self.vcs,
