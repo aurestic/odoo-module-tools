@@ -16,16 +16,6 @@ from ..vcs_wrapper import VcsWrapper
 _logger = logging.getLogger(__name__)
 
 
-def repository_dir(*args):
-    """ /home/<user>/.local/share/Odoo/repositories/<version> """
-    d = path_join(
-        config['data_dir'], 'repositories', release.series, *args)
-    if not isdir(d):
-        os.makedirs(d, 0o700)
-    assert os.access(d, os.W_OK), '%s: directory is not writable' % (d,)
-    return d
-
-
 def abslistdirs(d):
     for f in os.listdir(d):
         res = path_join(d, f)
@@ -43,9 +33,10 @@ def get_repository_paths():
     paths = config['addons_path'].split(',')
     paths = filter(
         lambda p: basename(normpath(p)) not in FORBIDDEN_NAMES, paths)
-    return deduplicate_list(paths + list(abslistdirs(repository_dir())))
+    return deduplicate_list(paths + list(
+        abslistdirs(config.repository_data_dir)))
 
-_logger.debug('Repository dir: %s', repository_dir())
+_logger.debug('Repository dir: %s', config.repository_data_dir)
 
 
 class RepositoryDashboard(models.TransientModel):

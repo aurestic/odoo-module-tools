@@ -11,7 +11,6 @@ import logging
 from openerp import api, exceptions, fields, models, _
 from openerp.tools import config
 
-from .repository_dashboard import repository_dir
 from ..vcs_wrapper import VcsWrapper
 
 _logger = logging.getLogger(__name__)
@@ -37,7 +36,8 @@ def build_repository_path(vcs, source, branch=None, test=False, **kwargs):
         'source': source,
         'branch': '_%s' % (branch,) if branch else '',
     }
-    return repository_dir(filename_sanitize.sub('_', basedir))
+    return path_join(
+        config.repository_data_dir, filename_sanitize.sub('_', basedir))
 
 
 class RepositoryRepository(models.TransientModel):

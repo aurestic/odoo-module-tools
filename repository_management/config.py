@@ -2,10 +2,13 @@
 # © 2016 Cristian Moncho <cristian.moncho@diagram.es>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
+import logging
 import os
 
 from openerp import release
-from openerp.tools import configmanager
+from openerp.tools.config import config, configmanager
+
+_logger = logging.getLogger(__name__)
 
 
 def repository_data_dir(self):
@@ -17,4 +20,7 @@ def repository_data_dir(self):
             "%s: directory is not writable" % d
     return d
 
-setattr(configmanager, 'test2', property(repository_data_dir))
+setattr(configmanager, 'repository_data_dir', property(repository_data_dir))
+
+_logger.info(
+    'Property injected; repository_data_dir =  %s', config.repository_data_dir)
