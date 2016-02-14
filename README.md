@@ -34,7 +34,7 @@ addon | version | summary
 [repository_management](repository_management/)* | 8.0.0.1 | Manage external repositories.
 [module_external](module_external/)* | 8.0.0.1 | Upload and install modules from external sources.
 
-\**It is highly discouraged to install the same module using both ways.*
+\**Both methods should not be used interchangeably to install the same module.*
 
 
 Disclaimer
@@ -44,3 +44,14 @@ Disclaimer
 * These modules are deployed with the purpose of helping developers to develop and test modules in a faster and easier way.
 * It is highly discouraged their usage in a production environments, for security and stability reasons.
 * Experienced and skilled users may use them for other purposes at their own risk.
+
+Licenses
+--------
+
+* The content of this project itself is licensed under the GNU AFFERO GENERAL PUBLIC LICENSE (Version 3). To view a copy of this license, visit http://www.gnu.org/licenses/agpl-3.0.html.
+* The icons [box] and [wrench] are licensed under a [Creative Commons (Attribution 3.0 Unported) License]. They are attributed to [Pixel Buddha].
+
+[box]: https://www.iconfinder.com/icons/289621/archive_box_bundle_cargo_delivery_package_products_icon#size=128
+[wrench]: https://www.iconfinder.com/icons/416405/service_setting_tool_tools_work_wrench_icon#size=128
+[Creative Commons (Attribution 3.0 Unported) License]: http://creativecommons.org/licenses/by/3.0/
+[Pixel Buddha]: https://www.iconfinder.com/PixelBuddha
