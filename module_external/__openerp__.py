@@ -5,14 +5,16 @@
 {
     'name': 'Module External',
     'summary': 'Upload and install modules from external sources.',
-    'author': 'Cristian Moncho',
     'version': '8.0.1.0',
+    'category': 'Tools',
+    'author': 'Cristian Moncho',
     'license': 'AGPL-3',
+    'application': False,
+    'installable': True,
     'depends': [
         'base',
     ],
     'data': [
         'wizard/module_external_wizard_view.xml',
     ],
-    'installable': False,
 }
