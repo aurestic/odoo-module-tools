@@ -31,8 +31,8 @@ Included Modules
 
 addon | version | summary
 --- | --- | ---
-[repository_management](repository_management/)* | 8.0.0.1 | Manage external repositories.
-[module_external](module_external/)* | 8.0.0.1 | Upload and install modules from external sources.
+[repository_management](repository_management/)* | 8.0.1.0 | Manage external repositories.
+[module_external](module_external/)* | 8.0.1.0 | Upload and install modules from external sources.
 
 \**Both methods should not be used interchangeably to install the same module.*
 
