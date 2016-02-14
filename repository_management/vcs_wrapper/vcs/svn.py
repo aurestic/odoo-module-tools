@@ -4,6 +4,8 @@
 
 # DOCS: https://github.com/dsoprea/PySvn
 
+from __future__ import absolute_import
+
 import logging
 
 from . import ABCVcs, which

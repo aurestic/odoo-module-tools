@@ -16,9 +16,9 @@ def load_vcs(vcs):
     try:
         mod = getattr(__import__(modname, globals(), locals(), [], -1), vcs)
         return getattr(mod, clsname)
-    except:
-        raise AttributeError(
-            'Wrapper not found: from %s import %s', modname, clsname)
+    except AttributeError:
+        raise Exception(
+            'Wrapper not found: from %s import %s' % (modname, clsname))
 
 
 # [TODO] Automatically detect *.py files in 'vcs' folder

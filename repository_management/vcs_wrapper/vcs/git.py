@@ -4,6 +4,8 @@
 
 # DOCS: https://github.com/gitpython-developers/GitPython
 
+from __future__ import absolute_import
+
 from datetime import datetime
 import logging
 

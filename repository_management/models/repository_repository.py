@@ -106,7 +106,7 @@ class RepositoryRepository(models.TransientModel):
         """ Show repository modules. """
         self.ensure_one()
         return {
-            'name': _('Modules in %s') % (self.source,),
+            'name': self.source,
             'type': 'ir.actions.act_window',
             'res_model': 'ir.module.module',
             'view_type': 'form',
