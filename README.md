@@ -48,7 +48,7 @@ Disclaimer
 Licenses
 --------
 
-* The content of this project itself is licensed under the GNU AFFERO GENERAL PUBLIC LICENSE (Version 3). To view a copy of this license, visit http://www.gnu.org/licenses/agpl-3.0.html.
+* The content of this project itself is licensed under the GNU AFFERO GENERAL PUBLIC LICENSE (Version 3). To view a copy of this license, see [LICENSE](LICENSE) or visit http://www.gnu.org/licenses/agpl-3.0.html.
 * The icons [box] and [wrench] are licensed under a [Creative Commons (Attribution 3.0 Unported) License]. They are attributed to [Pixel Buddha].
 
 [box]: https://www.iconfinder.com/icons/289621/archive_box_bundle_cargo_delivery_package_products_icon#size=128

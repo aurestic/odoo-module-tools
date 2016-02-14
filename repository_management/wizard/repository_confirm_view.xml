@@ -20,13 +20,18 @@
                             <li states="enable">The repository modules will be available.</li>
                             <li states="disable">The repository modules will no longer be available.</li>
                             <li states="remove">This action <strong>cannot be undone</strong>.</li>
-                            <li states="remove,enable,disable,update">
-                                This action <strong>may harm</strong> your database and/or can make
-                                the server <strong>unusable/unstartable</strong>.
+                            <li states="enable,update">
+                                This action <strong>may render the server unusable</strong> if the
+                                repository contains any syntax and/or semantic error.
                             </li>
-                            <li states="remove,enable,disable,update">
-                                It is highly recommended to <strong>restart the server</strong> and to
-                                <strong>update the module list</strong> when this action is performed.
+                            <li states="disable,update">
+                                This action <strong>may harm</strong> your database and/or render
+                                addons <strong>unloadable</strong>.
+                            </li>
+                            <li>
+                                This action may require a <strong>server restart</strong> and a
+                                <strong>module list update</strong> to ensure that the whole module
+                                list is correctly loaded.
                             </li>
                         </ul>
 
