@@ -20,6 +20,7 @@ Known Issues / Roadmap
 * Detect identical repos. Currently, https://<domain>.com/<name> != https://<domain>.com/<name>.git
 * Directory symlinks are detected as a different repo, even if they are linked to the same base directory.
 * Directory names follow the next – sometimes quite long – structure: <vcs>_<source>_<branch>. (Maybe make them shorter?)
+* Enabled repositories are allways inserted at the beginning of the **adons_path** list – for loading priority reasons. (Maybe make them sortable?)
 
 
 Requirenments

@@ -24,14 +24,10 @@ def find_modules(path):
             '__openerp__.py', '__terp__.py')))]
 
 
-def sanitize(string):
-    return re.sub(r'[^0-9a-zA-Z]', r'_', string)
-
-
-def build_repository_path(vcs, source, branch=None, test=False, **kwargs):
+def build_repository_path(vcs, source, branch=None, **kwargs):
     """ Generates the repository full path. """
     basedir = '%(test)s%(vcs)s_%(source)s%(branch)s' % {
-        'test': 'test_' if test else '',
+        'test': 'test_' if kwargs.get('test') else '',
         'vcs': vcs,
         'source': source,
         'branch': '_%s' % (branch,) if branch else '',
