@@ -20,7 +20,6 @@ def repository_data_dir(self):
             "%s: directory is not writable" % d
     return d
 
-setattr(configmanager, 'repository_data_dir', property(repository_data_dir))
+configmanager.repository_data_dir = property(repository_data_dir)
 
-_logger.info(
-    'Property injected; repository_data_dir =  %s', config.repository_data_dir)
+_logger.info('repositories path: %s', config.repository_data_dir)
