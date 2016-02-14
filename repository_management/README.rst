@@ -38,7 +38,3 @@ Requirenments
     * Module: `pip install python-hglib` – or – `apt-get install python-hglib`
 
 \**Package manager and/or package names may differ depending on the distribution.*
-
-[IMP] Improved all the README files.
-[ADD] Module icons
-[ADD] License
