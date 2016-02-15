@@ -19,7 +19,9 @@
                         <ul>
                             <li states="enable">The repository modules will be available.</li>
                             <li states="disable">The repository modules will no longer be available.</li>
-                            <li states="remove">This action <strong>cannot be undone</strong>.</li>
+                            <li states="remove">
+                                This action <strong>cannot be undone</strong>. Please consider a less
+                                intrusive way as keeping the repository disabled.</li>
                             <li states="enable,update">
                                 This action <strong>may render the server unusable</strong> if the
                                 repository contains any syntax and/or semantic error.
@@ -30,8 +32,8 @@
                             </li>
                             <li>
                                 This action may require a <strong>server restart</strong> and a
-                                <strong>module list update</strong> to ensure that the whole module
-                                list is correctly loaded.
+                                <strong>module list update</strong> to ensure that the resulting
+                                module list is correctly loaded after the operation.
                             </li>
                         </ul>
 

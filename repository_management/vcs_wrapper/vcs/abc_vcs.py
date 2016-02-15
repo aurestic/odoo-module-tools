@@ -76,7 +76,7 @@ class ABCVcs(object):
         return self._path
 
     def info(self):
-        """ Returns all the repository known info. """
+        """ Return all the repository known info. """
         return {
             'vcs': self._vcs,
             'path': self._path,
